@@ -1,0 +1,26 @@
+<?php
+
+    namespace presenter_namespace;
+
+    use Illuminate\Contracts\Support\Arrayable;
+    use Masterkey\Presenter\Contracts\PresenterContract;
+
+    /**
+     * presenter_class
+     *
+     * @package presenter_namespace
+     */
+    class presenter_class implements PresenterContract
+    {
+        protected $data;
+
+        public function __construct(Arrayable $data)
+        {
+            $this->data = $data;
+        }
+
+        public function getFormattedData()
+        {
+            return $this->data;
+        }
+    }
