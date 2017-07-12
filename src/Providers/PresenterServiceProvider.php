@@ -15,7 +15,9 @@
         {
             $config_path = $this->getConfigPath();
 
-            $this->publishes([$config_path, config_path('presenter.php')], 'presenters');
+            $this->publishes([
+                $config_path => config_path('presenter.php')
+            ], 'presenters');
         }
 
         public function register()
