@@ -1,9 +1,23 @@
 <?php
 
     return [
-        // Path of presenter creation
+        /*
+         |--------------------------------------------------------------------------
+         | Presenter Path
+         |--------------------------------------------------------------------------
+         |
+         | The path for creation of presenters
+         |
+         */
         'presenter_path' => 'app' . DIRECTORY_SEPARATOR . 'Presenters',
 
-        // Namespace of presenter
+        /*
+         |--------------------------------------------------------------------------
+         | Presenter Namespace
+         |--------------------------------------------------------------------------
+         |
+         | The namespace of Presenter Classes
+         |
+         */
         'presenter_namespace' => 'App\Presenters'
     ];
