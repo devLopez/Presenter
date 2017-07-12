@@ -26,7 +26,7 @@
                 MakePresenterCommand::class
             ]);
 
-            $this->mergeConfigFrom($this->getConfigPath(), 'presenters')
+            $this->mergeConfigFrom($this->getConfigPath(), 'presenters');
         }
 
         protected function getConfigPath()
