@@ -35,6 +35,8 @@
          */
         public function __construct(PresenterGenerator $generator)
         {
+            parent::__construct();
+
             $this->generator = $generator;
         }
 
