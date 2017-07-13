@@ -18,11 +18,18 @@
         protected $data;
 
         /**
+          * @var BaseCollection
+          */
+        protected $formattedData;
+
+        /**
          * @param   BaseCollection  $data
          */
         public function __construct(BaseCollection $data)
         {
             $this->data = $data;
+
+            $this->formattedData = new BaseCollection;
         }
 
         /**
@@ -30,6 +37,6 @@
          */
         public function getFormattedData()
         {
-            return new BaseCollection($this->data);
+            return $this->formattedData;
         }
     }
