@@ -8,19 +8,25 @@
     /**
      * presenter_class
      *
-     *
+     * @package presenter_namespace
      */
     class presenter_class implements PresenterContract
     {
+        /**
+         * @var Arrayable
+         */
         protected $data;
 
+        /**
+         * @param   Arrayable  $data
+         */
         public function __construct(Arrayable $data)
         {
             $this->data = $data;
         }
 
         /**
-         * @return  \Illuminate\Contracts\Support\Arrayable
+         * @return  Arrayable
          */
         public function getFormattedData()
         {

@@ -4,13 +4,12 @@
 
     use Illuminate\Console\Command;
     use Masterkey\Presenter\Generators\PresenterGenerator;
-    use Symfony\Component\Console\Input\InputArgument;
 
     /**
      * MakePresenterCommand
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.0.1
+     * @version 2.0.0
      * @since   13/07/2017
      */
     class MakePresenterCommand extends Command
@@ -18,7 +17,7 @@
         /**
          * @var string
          */
-        protected $name = 'make:presenter';
+        protected $signature = 'make:presenter {presenter}';
 
         /**
          * @var string
@@ -45,37 +44,13 @@
          */
         public function handle()
         {
-            $this->writePresenter(
-                $this->getArguments()
-            );
-        }
+            $presenter = $this->argument('presenter');
 
-        /**
-         * Generates a new Presenter Class with given name
-         *
-         * @param   string  $name
-         * @return  void
-         */
-        public function writePresenter($arguments)
-        {
-            $name = $arguments['presenter'];
-
-            if($this->generator->create($name)) {
-                $this->info('Presenter Class Was Created');
+            if($this->generator->create($presenter)) {
+                $this->info('Presenter Class created!');
+                return;
             }
 
             $this->error('An Error was occurred on presenter creation. Try again');
         }
-
-        /**
-         * Return the args inputed on console
-         *
-         * @return  array
-         */
-         protected function getArguments()
-         {
-             return [
-                 ['presenter', InputArgument::REQUIRED, 'The presenter name.']
-             ];
-         }
     }

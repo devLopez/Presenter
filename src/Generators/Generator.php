@@ -3,6 +3,8 @@
     namespace Masterkey\Presenter\Generators;
 
     use Illuminate\Support\Facades\Config;
+    use Illuminate\Filesystem\Filesystem;
+    use Masterkey\Presenter\Exceptions\PresenterExistsException;
 
     /**
      * Generator
@@ -10,8 +12,8 @@
      * Classe que realiza a geração dos Presenters
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotail.com>
-     * @version 1.0.0
-     * @since   12/07/2017
+     * @version 1.1.0
+     * @since   13/07/2017
      */
     class Generator
     {
@@ -19,6 +21,11 @@
          * @var Stub
          */
         protected $stub;
+
+        /**
+         * @var Filesystem
+         */
+        protected $files;
 
         public function __construct()
         {
@@ -29,13 +36,20 @@
          * Create the Presenter file
          *
          * @return  bool
+         * @throws  PresenterExistsException
          */
         protected function createClass()
         {
-            return $this->files->put(
-                $this->getPath(),
-                $this->stub->populateStub($this->getPopulatedData())
-            );
+            $file = $this->getPath();
+
+            if($this->files->exists($file)) {
+                throw new PresenterExistsException();
+            } else {
+                return $this->files->put(
+                    $file,
+                    $this->stub->populateStub($this->getPopulatedData())
+                );
+            }
         }
 
         /**
