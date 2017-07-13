@@ -45,9 +45,9 @@
          */
         public function handle()
         {
-            $arguments = $this->arguments();
-
-            $this->writePresenter($arguments);
+            $this->writePresenter(
+                $this->getArguments()
+            );
         }
 
         /**
@@ -72,10 +72,10 @@
          *
          * @return  array
          */
-        public function arguments()
-        {
-            return [
-                ['presenter', InputArgument::REQUIRED, 'The presenter name']
-            ];
-        }
+         protected function getArguments()
+         {
+             return [
+                 ['presenter', InputArgument::REQUIRED, 'The presenter name.']
+             ];
+         }
     }
