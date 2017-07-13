@@ -10,8 +10,8 @@
      * MakePresenterCommand
      *
      * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
-     * @version 1.0.0
-     * @since   12/07/2017
+     * @version 1.0.1
+     * @since   13/07/2017
      */
     class MakePresenterCommand extends Command
     {
@@ -23,7 +23,7 @@
         /**
          * @var string
          */
-        protected $description = 'Creates a new Presenter';
+        protected $description = 'Create a new Presenter';
 
         /**
          * @var PresenterGenerator
@@ -56,8 +56,10 @@
          * @param   string  $name
          * @return  void
          */
-        public function writePresenter($name)
+        public function writePresenter($arguments)
         {
+            $name = $arguments['presenter'];
+
             if($this->generator->create($name)) {
                 $this->info('Presenter Class Was Created');
             }
