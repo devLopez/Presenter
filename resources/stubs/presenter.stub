@@ -2,7 +2,7 @@
 
     namespace presenter_namespace;
 
-    use Illuminate\Contracts\Support\Arrayable;
+    use Illuminate\Support\Collection as BaseCollection;
     use Masterkey\Presenter\Contracts\PresenterContract;
 
     /**
@@ -13,23 +13,23 @@
     class presenter_class implements PresenterContract
     {
         /**
-         * @var Arrayable
+         * @var BaseCollection
          */
         protected $data;
 
         /**
-         * @param   Arrayable  $data
+         * @param   BaseCollection  $data
          */
-        public function __construct(Arrayable $data)
+        public function __construct(BaseCollection $data)
         {
             $this->data = $data;
         }
 
         /**
-         * @return  Arrayable
+         * @return  BaseCollection
          */
         public function getFormattedData()
         {
-            return $this->data;
+            return new BaseCollection($this->data);
         }
     }
