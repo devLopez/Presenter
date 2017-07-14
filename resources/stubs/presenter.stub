@@ -4,6 +4,7 @@
 
     use Illuminate\Support\Collection as BaseCollection;
     use Masterkey\Presenter\Contracts\PresenterContract;
+    use Masterkey\Presenter\SerializePresenter;
 
     /**
      * presenter_class
@@ -12,6 +13,8 @@
      */
     class presenter_class implements PresenterContract
     {
+        use SerializePresenter;
+
         /**
          * @var BaseCollection
          */
